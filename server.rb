@@ -97,3 +97,8 @@ end
 error do
   jsonp ok: false
 end
+
+after do
+  headers \
+    "Access-Control-Allow-Origin" => "*"
+end
