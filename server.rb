@@ -9,7 +9,7 @@ require 'bcdice_wrap'
 require 'exception'
 
 module BCDiceAPI
-  VERSION = "0.5.1"
+  VERSION = "0.5.1 with CORS"
 end
 
 
@@ -41,7 +41,7 @@ helpers do
 end
 
 get "/" do
-  "Hello. This is BCDice-API with K/D."
+  "Hello. This is BCDice-API with CORS."
 end
 
 get "/v1/version" do
