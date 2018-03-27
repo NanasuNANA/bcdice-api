@@ -1,3 +1,7 @@
+# 自分用 bcdice-api デプロイ用
+[「エクリプス・フェイズ」ダイスボット](https://bitbucket.org/Nanasu/dodontohuyong-eclipe-phase-daisubotsuto)
+を追加したのでライセンスは「[クリエイティブ・コモンズ 表示 - 非営利 - 継承 3.0 非移植](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)」。
+
 # BCDice-API
 
 BCDiceを提供するWebAPIサーバー
