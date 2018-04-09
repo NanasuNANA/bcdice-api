@@ -9,8 +9,7 @@ require 'bcdice_wrap'
 require 'exception'
 
 module BCDiceAPI
-  VERSION = "0.5.3"
-    + " with CORS"
+  VERSION = "0.5.3 with CORS"
 end
 
 configure :production do
