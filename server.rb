@@ -9,9 +9,13 @@ require 'bcdice_wrap'
 require 'exception'
 
 module BCDiceAPI
-  VERSION = "0.5.2 with CORS"
+  VERSION = "0.5.3"
+    + " with CORS"
 end
 
+configure :production do
+  set :dump_errors, false
+end
 
 helpers do
   def diceroll(system, command)
@@ -19,7 +23,7 @@ helpers do
     if dicebot.nil?
       raise UnsupportedDicebot
     end
-    if command.nil?
+    if command.nil? || command.empty?
       raise CommandError
     end
 
