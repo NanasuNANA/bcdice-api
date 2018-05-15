@@ -9,7 +9,7 @@ require 'bcdice_wrap'
 require 'exception'
 
 module BCDiceAPI
-  VERSION = "0.5.3 with CORS"
+  VERSION = "0.6.0"
 end
 
 configure :production do
@@ -43,8 +43,12 @@ helpers do
   end
 end
 
+before do
+  response.headers['Access-Control-Allow-Origin'] = '*'
+end
+
 get "/" do
-  "Hello. This is BCDice-API with CORS."
+  "Hello. This is BCDice-API."
 end
 
 get "/v1/version" do
@@ -53,6 +57,10 @@ end
 
 get "/v1/systems" do
   jsonp systems: BCDice::SYSTEMS
+end
+
+get "/v1/names" do
+  jsonp names: BCDice::NAMES
 end
 
 get "/v1/systeminfo" do
@@ -99,9 +107,4 @@ end
 
 error do
   jsonp ok: false
-end
-
-after do
-  headers \
-    "Access-Control-Allow-Origin" => "*"
 end

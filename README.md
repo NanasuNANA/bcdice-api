@@ -6,7 +6,7 @@
 
 BCDiceを提供するWebAPIサーバー
 
-[![Build Status](https://travis-ci.org/NKMR6194/bcdice-api.svg?branch=master)](https://travis-ci.org/NKMR6194/bcdice-api)
+[![Build Status](https://travis-ci.org/ysakasin/bcdice-api.svg?branch=master)](https://travis-ci.org/ysakasin/bcdice-api)
 
 ## Demo
 
@@ -22,7 +22,7 @@ BCDiceは[どどんとふ](http://www.dodontof.com)をはじめとして、[TRPG
 ## Setup
 
 ```
-$ git clone https://github.com/NKMR6194/bcdice-api.git
+$ git clone https://github.com/ysakasin/bcdice-api.git
 $ cd bcdice-api
 $ git checkout `git describe --abbrev=0` #直近のリリースに移動
 $ git submodule init
@@ -36,9 +36,10 @@ $ bundle exec rackup
 ## API
 
 Method                           | Description
--------------------------------- | ----- 
+-------------------------------- | -----
 [/v1/version](/docs/api.md#version)   | BCDiceとAPIサーバーのバージョン
-[/v1/systems](/docs/api.md#systems)   | ダイスボットのシステム名一覧
+[/v1/systems](/docs/api.md#systems)   | ダイスボットのシステムID一覧
+[/v1/names](/docs/api.md#names)       | ダイスボットのシステムIDとシステム名前の一覧
 [/v1/systeminfo](/docs/api.md#systeminfo)   | ダイスボットのシステム情報取得
 [/v1/diceroll](/docs/api.md#diceroll) | ダイスボットのコマンドを実行
 [/v1/onset](/docs/api.md#onset)       | Onset!互換
@@ -47,7 +48,8 @@ Method                           | Description
 
 - [discord-bcdicebot](https://shunshun94.github.io/discord-bcdicebot/)
 - [Line botでダイスを振る - Qiita](http://qiita.com/violet2525/items/85607f2cc466a76cca07)
-- [bcdice-api | 大ちゃんのいろいろ雑記](https://www.taruki.com/wp/?p=6507) : どどんとふ公式鯖による公開サーバー
+- [HTTPS版BCDice-API | 大ちゃんのいろいろ雑記](https://www.taruki.com/wp/?p=6610) : どどんとふ公式鯖による公開サーバー
+- [オンラインセッションツール – Hotch Potch .](https://aimsot.net/tool-info/) : えいむ氏による公開サーバー
 
 ## Donate
 
@@ -56,4 +58,4 @@ Method                           | Description
 
 ## The Auther
 
-酒田　シンジ (@NKMR6194)
+酒田　シンジ (@ysakasin)
