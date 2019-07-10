@@ -62,7 +62,8 @@ class DiceBot
 上記のようにダイス文字の後ろに空白を入れて発言する事も可能。
 以下、使用例
 　3D6+1>=9 ：3d6+1で目標値9以上かの判定
-　nDmKHx、nDmKLx、nDmDhx、nDmDLx　K:残す(Keep)/D:除く(Drop)
+　nDmKHx、nDmKLx、nDmDhx、nDmDLx
+　　K:残す(Keep)/D:除く(Drop)
 　　H:高いものから/L:低いものからx個、省略時は1
 　2D20KH1+1D4 : D20を2個振り、高いものに1D4を足す
 　1D100<=50 ：D100で50％目標の下方ロールの例
