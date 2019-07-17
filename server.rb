@@ -52,7 +52,7 @@ before do
 end
 
 get "/" do
-  "Hello. This is BCDice-API."
+  "Hello. This is BCDice-API with K/D."
 end
 
 get "/v1/version" do
