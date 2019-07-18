@@ -4,8 +4,6 @@ require "diceBot/DiceBot"
 require "diceBot/DiceBotLoader"
 
 class BCDice
-  # VERSION = $bcDiceVersion
-
   DICEBOTS = (DiceBotLoader.collectDiceBots + [DiceBot.new]).
     map { |diceBot| [diceBot.gameType, diceBot] }.
     sort.
