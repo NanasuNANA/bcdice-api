@@ -28,10 +28,26 @@ $ git checkout `git describe --abbrev=0` #直近のリリースに移動
 $ git submodule init
 $ git submodule update
 $ bundle install
+```
+
+## Run
+
+### Development
+
+```
 $ bundle exec rackup
 ```
 
-実際に運用する場合には、UnicornやPumaの利用をお勧めします。（[参考資料](http://recipes.sinatrarb.com/p/deployment/nginx_proxied_to_unicorn)）
+### Production
+
+```
+$ APP_ENV=production bundle exec rackup -E deployment
+```
+
+実際に運用する場合には、[Puma](https://puma.io/)の利用をお勧めします。
+- [Running sinatra classic with puma](https://github.com/puma/puma/wiki/Running-sinatra-classic-with-puma)（設定済み）
+- [Configuration](https://github.com/puma/puma#configuration)
+- [設定例](https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#config)
 
 ## API
 
@@ -58,7 +74,7 @@ Method                           | Description
 ## Donate
 
 - [Amazonほしい物リスト](http://amzn.asia/gK5kW6A)
-- [Amazonギフト券](https://www.amazon.co.jp/Amazonギフト券-Eメールタイプ/dp/BT00DHI8G) 宛先: donate@sakasin.net
+- [Amazonギフト券](https://www.amazon.co.jp/dp/B004N3APGO/) 宛先: ysakasin@gmail.com
 
 ## The Auther
 
