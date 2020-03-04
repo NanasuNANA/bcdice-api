@@ -5,11 +5,12 @@ $:.unshift File.join(__dir__, "lib")
 
 require 'sinatra'
 require 'sinatra/jsonp'
+require "sinatra/reloader" if development?
 require 'bcdice_wrap'
 require 'exception'
 
 module BCDiceAPI
-  VERSION = "0.7.0"
+  VERSION = "0.8.0"
 end
 
 configure :production do
@@ -80,19 +81,6 @@ get "/v1/diceroll" do
   result, secret, dices = diceroll(params[:system], params[:command])
 
   jsonp ok: true, result: result, secret: secret, dices: dices
-end
-
-get "/v1/onset" do
-  if params[:list] == "1"
-    return BCDice::SYSTEMS.join("\n")
-  end
-
-  begin
-    result, secret, dices = diceroll(params[:sys] || "DiceBot", params[:text])
-    "onset" + result
-  rescue UnsupportedDicebot, CommandError
-    "error"
-  end
 end
 
 not_found do
