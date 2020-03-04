@@ -35,7 +35,8 @@ GEM
       power_assert
     tilt (2.0.10)
 
-
+PLATFORMS
+  x86_64-linux
 
 DEPENDENCIES
   puma (~> 4.3)
