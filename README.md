@@ -45,15 +45,18 @@ $ APP_ENV=production bundle exec rackup -E deployment
 ```
 
 実際に運用する場合には、[Puma](https://puma.io/)の利用をお勧めします。
-- [Running sinatra classic with puma](https://github.com/puma/puma/wiki/Running-sinatra-classic-with-puma)（設定済み）
 - [Configuration](https://github.com/puma/puma#configuration)
 - [設定例](https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#config)
+
+公開サーバーとして運用する場合、 `/v1/admin` の情報を設定するようにしてください。
+- [/v1/admin 設定方法](/docs/api.md#admin)
 
 ## API
 
 Method                           | Description
 -------------------------------- | -----
 [/v1/version](/docs/api.md#version)   | BCDiceとAPIサーバーのバージョン
+[/v1/admin](/docs/api.md#admin)       | APIサーバ提供者の名前と連絡先
 [/v1/systems](/docs/api.md#systems)   | ダイスボットのシステムID一覧
 [/v1/names](/docs/api.md#names)       | ダイスボットのシステムIDとシステム名前の一覧
 [/v1/systeminfo](/docs/api.md#systeminfo)   | ダイスボットのシステム情報取得
