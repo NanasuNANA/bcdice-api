@@ -1,23 +1,10 @@
 # frozen_string_literal: true
-require "bcdiceCore"
-require "diceBot/DiceBot"
-require "diceBot/DiceBotLoader"
+
+require 'bcdiceCore'
+require 'diceBot/DiceBot'
+require 'diceBot/DiceBotLoader'
 
 class BCDice
-  DICEBOTS = (DiceBotLoader.collectDiceBots + [DiceBot.new]).
-    map { |diceBot| [diceBot.id, diceBot] }.
-    sort.
-    to_h.
-    freeze
-
-  SYSTEMS = DICEBOTS.keys.
-    sort.
-    freeze
-
-  NAMES = DICEBOTS.
-    map { |gameType, diceBot| {system: diceBot.id, name: diceBot.name} }.
-    freeze
-
   # 与えられた文字列が計算コマンドのようであるかを返す
   # @param [String] s 調べる文字列
   # @return [true] sが計算コマンドのようであった場合
@@ -25,39 +12,40 @@ class BCDice
   #
   # 詳細な構文解析は行わない。
   # 計算コマンドで使われ得る文字のみで構成されているかどうかだけを調べる。
-  def self.seem_to_be_calc?(s)
-    return s.match?(%r{\AC\([-+*/()\d]+\)}i)
+  def self.seem_to_be_calc?(str)
+    str.match?(%r{\AC\([-+*/()\d]+\)}i)
   end
 
-  def dice_command   # ダイスコマンドの分岐処理
+  # ダイスコマンドの分岐処理
+  def dice_command
     arg = @message.upcase
 
     debug('dice_command arg', arg)
 
     output, secret = @diceBot.dice_command(@message, @nick_e)
-    return output, secret if( output != '1' )
+    return output, secret if output != '1'
 
     output, secret = rollD66(arg)
-    return output, secret unless( output.nil? )
+    return output, secret unless output.nil?
 
     output, secret = checkAddRoll(arg)
-    return output, secret unless( output.nil? )
+    return output, secret unless output.nil?
 
     output, secret = checkBDice(arg)
-    return output, secret unless( output.nil? )
+    return output, secret unless output.nil?
 
     output, secret = checkRnDice(arg)
-    return output, secret unless( output.nil? )
+    return output, secret unless output.nil?
 
     output, secret = checkUpperRoll(arg)
-    return output, secret unless( output.nil? )
+    return output, secret unless output.nil?
 
     output, secret = checkChoiceCommand(arg)
-    return output, secret unless( output.nil? )
+    return output, secret unless output.nil?
 
-    output = nil #BCDiceからの変更点
+    output = nil # BCDiceからの変更点
     secret = nil
-    return output, secret
+    [output, secret]
   end
 
   # 計算コマンドの実行を試みる
@@ -72,19 +60,15 @@ class BCDice
     # のみが書かれているコマンドなどは拒絶するために必要な処理。
     # BCDice側では、設定されたメッセージが計算コマンドかどうかの判定を行って
     # いないため、やむを得ずここで判定する。
-    unless self.class.seem_to_be_calc?(command)
-      return nil, nil
-    end
+    return nil, nil unless self.class.seem_to_be_calc?(command)
 
     stripped_message = @message.strip
     matches = stripped_message.match(/\AC(-?\d+)\z/i)
 
-    if matches.nil?
-      return nil, nil
-    end
+    return nil, nil if matches.nil?
 
     calc_result = matches[1]
-    return ": 計算結果 ＞ #{calc_result}", false
+    [": 計算結果 ＞ #{calc_result}", false]
   end
 end
 
